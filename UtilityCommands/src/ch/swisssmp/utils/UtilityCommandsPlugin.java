@@ -17,6 +17,9 @@ public class UtilityCommandsPlugin extends JavaPlugin{
 		Bukkit.getPluginManager().registerEvents(new BackLocationListener(), this);
 		Bukkit.getPluginManager().registerEvents(new InventorySeeListener(), this);
 		Bukkit.getPluginManager().registerEvents(new VanishListener(), this);
+		Bukkit.getPluginManager().registerEvents(new BlitzableiterListener(), this);
+
+		BlitzableiterListener.reloadConfig();
 
 		TeleportCommands tpCommands = new TeleportCommands();
 		this.getCommand("tp").setExecutor(tpCommands);
@@ -47,6 +50,7 @@ public class UtilityCommandsPlugin extends JavaPlugin{
 		this.getCommand("hat").setExecutor(new HatCommand());
 		this.getCommand("playertime").setExecutor(new PlayerTimeCommand());
 		this.getCommand("playerweather").setExecutor(new PlayerWeatherCommand());
+		this.getCommand("blitzableiter").setExecutor(new BlitzableiterCommand());
 
 		Bukkit.getLogger().info(pdfFile.getName() + " has been enabled (Version: " + pdfFile.getVersion() + ")");
 	}

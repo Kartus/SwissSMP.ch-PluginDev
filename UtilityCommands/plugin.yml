@@ -94,6 +94,9 @@ permissions:
   smp.commands.teleport.position:
     description: Erlaubt Verwendungs des Befehls /tp mit Koordinaten als Argument
     default: op
+  smp.commands.blitzableiter:
+    description: Erlaubt Verwendung des Befehls /blitzableiter
+    default: op
 commands:
   help:
     description: Zeigt die Hilfe an
@@ -223,3 +226,11 @@ commands:
     description: Erlaubt Teleportieren von anderen Spielern.
     usage: /tp (voyager) (destinationPlayer)
     permission: smp.commands.teleport.others
+  blitzableiter on:
+    description: Erlaubt Aktivieren des globalen Blitzschutzes.
+    usage: /blitzableiter (on|off)
+    permission: smp.commands.blitzableiter
+  blitzableiter off:
+    description: Erlaubt Deaktivieren des globalen Blitzschutzes.
+    usage: /blitzableiter (on|off)
+    permission: smp.commands.blitzableiter

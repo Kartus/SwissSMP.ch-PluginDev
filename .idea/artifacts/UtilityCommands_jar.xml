@@ -4,6 +4,7 @@
     <root id="archive" name="UtilityCommands.jar">
       <element id="module-output" name="UtilityCommands" />
       <element id="file-copy" path="$PROJECT_DIR$/UtilityCommands/plugin.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/UtilityCommands/config.yml" output-file-name="config.yml" />
     </root>
   </artifact>
 </component>
