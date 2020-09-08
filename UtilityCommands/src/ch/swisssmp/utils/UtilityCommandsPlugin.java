@@ -51,6 +51,7 @@ public class UtilityCommandsPlugin extends JavaPlugin{
 		this.getCommand("playertime").setExecutor(new PlayerTimeCommand());
 		this.getCommand("playerweather").setExecutor(new PlayerWeatherCommand());
 		this.getCommand("blitzableiter").setExecutor(new BlitzableiterCommand());
+		this.getCommand("lightning").setExecutor(new LightningCommand());
 
 		Bukkit.getLogger().info(pdfFile.getName() + " has been enabled (Version: " + pdfFile.getVersion() + ")");
 	}

@@ -1,5 +1,5 @@
 main: ch.swisssmp.utils.UtilityCommandsPlugin
-version: 10
+version: 11
 api-version: 1.13
 name: UtilityCommands
 authors: [detig_iii,WhiteGuggi]
@@ -96,6 +96,9 @@ permissions:
     default: op
   smp.commands.blitzableiter:
     description: Erlaubt Verwendung des Befehls /blitzableiter
+    default: op
+  smp.commands.lightning:
+    description: Erlaubt Verwendung des Befehls /lightning
     default: op
 commands:
   help:
@@ -234,3 +237,7 @@ commands:
     description: Erlaubt Deaktivieren des globalen Blitzschutzes.
     usage: /blitzableiter (on|off)
     permission: smp.commands.blitzableiter
+  lightning:
+    description: Erlaubt Werfen eines Blitzes auf den anvisierten Block.
+    usage: /lightning
+    permission: smp.commands.lightning
