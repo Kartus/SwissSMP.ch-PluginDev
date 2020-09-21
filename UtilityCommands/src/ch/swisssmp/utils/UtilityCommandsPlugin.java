@@ -14,12 +14,14 @@ public class UtilityCommandsPlugin extends JavaPlugin{
 		plugin = this;
 		pdfFile = getDescription();
 
+		getConfig().options().copyDefaults();
+		saveDefaultConfig();
+		BlitzableiterListener.reloadConfig();
+
 		Bukkit.getPluginManager().registerEvents(new BackLocationListener(), this);
 		Bukkit.getPluginManager().registerEvents(new InventorySeeListener(), this);
 		Bukkit.getPluginManager().registerEvents(new VanishListener(), this);
 		Bukkit.getPluginManager().registerEvents(new BlitzableiterListener(), this);
-
-		BlitzableiterListener.reloadConfig();
 
 		TeleportCommands tpCommands = new TeleportCommands();
 		this.getCommand("tp").setExecutor(tpCommands);

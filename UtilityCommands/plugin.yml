@@ -229,12 +229,8 @@ commands:
     description: Erlaubt Teleportieren von anderen Spielern.
     usage: /tp (voyager) (destinationPlayer)
     permission: smp.commands.teleport.others
-  blitzableiter on:
+  blitzableiter:
     description: Erlaubt Aktivieren des globalen Blitzschutzes.
-    usage: /blitzableiter (on|off)
-    permission: smp.commands.blitzableiter
-  blitzableiter off:
-    description: Erlaubt Deaktivieren des globalen Blitzschutzes.
     usage: /blitzableiter (on|off)
     permission: smp.commands.blitzableiter
   lightning:

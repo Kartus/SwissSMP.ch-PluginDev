@@ -1,5 +1,6 @@
 package ch.swisssmp.utils;
 
+import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
@@ -15,7 +16,8 @@ public class LightningCommand implements CommandExecutor {
             sender.sendMessage("/lightning kann nur ingame verwendet werden");
             return true;
         }
-        if(args.length > 0){
+        if(args.length != 0){
+            Bukkit.getLogger().info("Arguments spotted");
             return false;
         }
         Player player = (Player) sender;

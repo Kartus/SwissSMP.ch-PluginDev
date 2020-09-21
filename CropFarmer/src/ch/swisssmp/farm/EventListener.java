@@ -27,21 +27,21 @@ public class EventListener implements Listener {
 		active = true;
 	}
 
-	@EventHandler
-	private void BlockeruPlacedesu(BlockPlaceEvent event){
-		Bukkit.getLogger().info("Blockeru placedesu!");
-	}
+//	@EventHandler
+//	private void BlockeruPlacedesu(BlockPlaceEvent event){
+//		Bukkit.getLogger().info("Blockeru placedesu!");
+//	}
 	
 	@EventHandler
 	private void onBlockPlace(BlockPlaceEvent event){
-		Bukkit.getLogger().info("BlockPlaceEvent (cropfarmer)");
+//		Bukkit.getLogger().info("BlockPlaceEvent (cropfarmer)");
 		if(!active) {
-			Bukkit.getLogger().info("!active");
+//			Bukkit.getLogger().info("!active");
 			return;
 		}
 		if(!event.getPlayer().hasPermission("cropfarm.use")) return;
 		if(!SeedPlacer.isCrop(event.getBlock().getType())) {
-			Bukkit.getLogger().info("Not a crop");
+//			Bukkit.getLogger().info("Not a crop");
 			return;
 		}
 		active = false; //<--this prevents the plugin from listening to its own BlockPlaceEvents
