@@ -1,11 +1,14 @@
 package ch.swisssmp.deathmessages;
 
+import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByBlockEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -14,15 +17,32 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.projectiles.BlockProjectileSource;
 import org.bukkit.projectiles.ProjectileSource;
 
+import java.util.HashMap;
+import java.util.UUID;
+
 public class EventListener implements Listener {
+    private FileConfiguration config;
+    private HashMap<UUID, Long> cooldowns = new HashMap<>();
+
+    public EventListener(FileConfiguration config) {
+        this.config = config;
+    }
+
     @EventHandler
     private void onPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
+        UUID playerId = player.getUniqueId();
         String deathMessage = event.getDeathMessage();
         String entity = null;
         String cause = null;
         String block = null;
         String killer = null;
+        Boolean cooldownsActive = config.getBoolean("pvpCooldown");
+        Long cooldownTime = config.getLong("pvpCooldownTime");
+        if (cooldownsActive && (cooldowns.containsKey(playerId) && cooldowns.get(playerId) > System.currentTimeMillis())) {
+            event.setDeathMessage("");
+            return;
+        }
 
         if (player.getKiller() != null) {
             killer = player.getKiller().getDisplayName();
@@ -65,5 +85,8 @@ public class EventListener implements Listener {
             }
         }
         event.setDeathMessage(DeathMessages.GetCustomDeathMessage(player, deathMessage, cause, entity, block, killer));
+        if (cooldownsActive && "PLAYER".equals(entity)) {
+            cooldowns.put(playerId, System.currentTimeMillis() + cooldownTime);
+        }
     }
 }
