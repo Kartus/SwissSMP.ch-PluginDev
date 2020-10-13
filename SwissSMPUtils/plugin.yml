@@ -1,5 +1,5 @@
 main: ch.swisssmp.utils.SwissSMPUtils
-version: 16
+version: 17
 api-version: 1.13
 name: SwissSMPUtils
 author: detig_iii

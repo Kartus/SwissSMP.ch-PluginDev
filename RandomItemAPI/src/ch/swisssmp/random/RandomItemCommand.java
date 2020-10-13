@@ -8,13 +8,13 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_16_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_16_R2.inventory.CraftItemStack;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import ch.swisssmp.utils.Mathf;
-import net.minecraft.server.v1_16_R1.NBTTagCompound;
+import net.minecraft.server.v1_16_R2.NBTTagCompound;
 
 public class RandomItemCommand implements CommandExecutor{
 
@@ -30,7 +30,7 @@ public class RandomItemCommand implements CommandExecutor{
 		if(itemStack==null){
 			sender.sendMessage("[RandomItemAPI] Nimm zuerst ein Item in deine Haupthand.");
 		}
-		net.minecraft.server.v1_16_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
+		net.minecraft.server.v1_16_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
 		NBTTagCompound nbtTag = nmsStack.getTag();
 		if(nbtTag==null) nbtTag = new NBTTagCompound();
 		NBTTagCompound randomizeData = nbtTag.hasKey("randomize") ? nbtTag.getCompound("randomize") : new NBTTagCompound();

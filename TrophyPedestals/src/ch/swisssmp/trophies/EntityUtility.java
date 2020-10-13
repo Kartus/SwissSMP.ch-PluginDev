@@ -122,8 +122,8 @@ public class EntityUtility {
 	protected static ArmorStand spawnInvisibleArmorStand(Location l){
 	    //You can remove the net.minecraft.server.v1_8_R3 and just import the classes
 	    //You need to change v1_8_R3 for your version.
-	    net.minecraft.server.v1_16_R1.World w = ((org.bukkit.craftbukkit.v1_16_R1.CraftWorld)l.getWorld()).getHandle();
-	    net.minecraft.server.v1_16_R1.EntityArmorStand nmsEntity = new net.minecraft.server.v1_16_R1.EntityArmorStand(w, l.getX(),  l.getY(), l.getZ());
+	    net.minecraft.server.v1_16_R2.World w = ((org.bukkit.craftbukkit.v1_16_R2.CraftWorld)l.getWorld()).getHandle();
+	    net.minecraft.server.v1_16_R2.EntityArmorStand nmsEntity = new net.minecraft.server.v1_16_R2.EntityArmorStand(w, l.getX(),  l.getY(), l.getZ());
 	    nmsEntity.setLocation(l.getX(), l.getY(), l.getZ(), l.getYaw(), l.getPitch());
 	    nmsEntity.setInvisible(true);
 	    nmsEntity.setNoGravity(true);

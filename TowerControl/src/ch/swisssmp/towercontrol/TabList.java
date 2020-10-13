@@ -2,11 +2,11 @@ package ch.swisssmp.towercontrol;
 
 import java.io.IOException;
 
-import net.minecraft.server.v1_16_R1.IChatBaseComponent;
-import net.minecraft.server.v1_16_R1.PacketDataSerializer;
-import net.minecraft.server.v1_16_R1.PacketPlayOutPlayerListHeaderFooter;
-import net.minecraft.server.v1_16_R1.PlayerConnection;
-import org.bukkit.craftbukkit.v1_16_R1.entity.CraftPlayer;
+import net.minecraft.server.v1_16_R2.IChatBaseComponent;
+import net.minecraft.server.v1_16_R2.PacketDataSerializer;
+import net.minecraft.server.v1_16_R2.PacketPlayOutPlayerListHeaderFooter;
+import net.minecraft.server.v1_16_R2.PlayerConnection;
+import org.bukkit.craftbukkit.v1_16_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import com.google.gson.JsonObject;

@@ -6,16 +6,16 @@ import java.util.List;
 
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
-import org.bukkit.craftbukkit.v1_16_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_16_R2.inventory.CraftItemStack;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import ch.swisssmp.utils.Random;
-import net.minecraft.server.v1_16_R1.NBTBase;
-import net.minecraft.server.v1_16_R1.NBTTagCompound;
-import net.minecraft.server.v1_16_R1.NBTTagList;
+import net.minecraft.server.v1_16_R2.NBTBase;
+import net.minecraft.server.v1_16_R2.NBTTagCompound;
+import net.minecraft.server.v1_16_R2.NBTTagList;
 
 public class RandomItemUtil {
 	private static Random random = new Random();
@@ -28,7 +28,7 @@ public class RandomItemUtil {
 	}
 	public static ItemStack buildItemStack(ItemStack template, Random random, double chanceOverride){
 		//extract nbt data from the template
-		net.minecraft.server.v1_16_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(template);
+		net.minecraft.server.v1_16_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(template);
 		NBTTagCompound nbtTag = nmsStack.getTag();
 		//if there is nothing to randomize simply return a copy of the template
 		if(nbtTag==null || !nbtTag.hasKey("randomize")) return template.clone();
@@ -194,12 +194,12 @@ public class RandomItemUtil {
 	}
 	
 	private static NBTTagCompound getNBTData(ItemStack itemStack){
-		net.minecraft.server.v1_16_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
+		net.minecraft.server.v1_16_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
 		return nmsStack.getTag();
 	}
 	
 	private static void setNBTData(ItemStack itemStack, NBTTagCompound nbtTag){
-		net.minecraft.server.v1_16_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
+		net.minecraft.server.v1_16_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
 		nmsStack.setTag(nbtTag);
 		itemStack.setItemMeta(CraftItemStack.getItemMeta(nmsStack));
 	}

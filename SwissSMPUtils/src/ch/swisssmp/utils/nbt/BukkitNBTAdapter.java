@@ -1,6 +1,6 @@
 package ch.swisssmp.utils.nbt;
 
-import net.minecraft.server.v1_16_R1.*;
+import net.minecraft.server.v1_16_R2.*;
 import net.querz.nbt.tag.*;
 import net.querz.nbt.tag.Tag;
 import org.bukkit.Bukkit;

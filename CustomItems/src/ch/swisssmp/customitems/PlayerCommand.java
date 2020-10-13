@@ -15,7 +15,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_16_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_16_R2.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.Inventory;
@@ -25,11 +25,11 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import net.minecraft.server.v1_16_R1.NBTBase;
-import net.minecraft.server.v1_16_R1.NBTTagByteArray;
-import net.minecraft.server.v1_16_R1.NBTTagCompound;
-import net.minecraft.server.v1_16_R1.NBTTagIntArray;
-import net.minecraft.server.v1_16_R1.NBTTagList;
+import net.minecraft.server.v1_16_R2.NBTBase;
+import net.minecraft.server.v1_16_R2.NBTTagByteArray;
+import net.minecraft.server.v1_16_R2.NBTTagCompound;
+import net.minecraft.server.v1_16_R2.NBTTagIntArray;
+import net.minecraft.server.v1_16_R2.NBTTagList;
 import org.bukkit.util.StringUtil;
 
 public class PlayerCommand implements TabExecutor {
@@ -84,7 +84,7 @@ public class PlayerCommand implements TabExecutor {
 				name = itemStack.getType().name();
 			}
 			sender.sendMessage("[CustomItems] Analysiere "+name);
-			net.minecraft.server.v1_16_R1.ItemStack craftItemStack = CraftItemStack.asNMSCopy(itemStack);
+			net.minecraft.server.v1_16_R2.ItemStack craftItemStack = CraftItemStack.asNMSCopy(itemStack);
 			if(craftItemStack.hasTag()){
 				NBTTagCompound nbtTags = craftItemStack.getTag();
 				this.displayNBTTagCompound(nbtTags, player, 0);

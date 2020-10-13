@@ -2,7 +2,7 @@ package ch.swisssmp.utils.nbt;
 
 import ch.swisssmp.utils.ItemUtil;
 import ch.swisssmp.utils.Position;
-import net.minecraft.server.v1_16_R1.NBTTagCompound;
+import net.minecraft.server.v1_16_R2.NBTTagCompound;
 import net.querz.nbt.io.NamedTag;
 import net.querz.nbt.tag.*;
 import org.bukkit.Color;
