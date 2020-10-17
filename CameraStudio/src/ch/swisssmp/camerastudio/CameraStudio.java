@@ -1,10 +1,10 @@
 package ch.swisssmp.camerastudio;
 
-import net.minecraft.server.v1_16_R1.PacketPlayOutMapChunk;
-import net.minecraft.server.v1_16_R1.PlayerConnection;
+import net.minecraft.server.v1_16_R2.PacketPlayOutMapChunk;
+import net.minecraft.server.v1_16_R2.PlayerConnection;
 import org.bukkit.*;
-import org.bukkit.craftbukkit.v1_16_R1.CraftChunk;
-import org.bukkit.craftbukkit.v1_16_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_16_R2.CraftChunk;
+import org.bukkit.craftbukkit.v1_16_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import java.math.BigDecimal;
@@ -206,7 +206,7 @@ public class CameraStudio {
             for(int z = 0; z < radius*2+1; z++){
                 chunk = world.getChunkAt(chunk_x+x, chunk_z+z);
                 if(!chunk.isLoaded())chunk.load();
-                playerConnection.sendPacket(new PacketPlayOutMapChunk(((CraftChunk)chunk).getHandle(),65535,true));
+                playerConnection.sendPacket(new PacketPlayOutMapChunk(((CraftChunk)chunk).getHandle(),65535));
             }
         }
     }

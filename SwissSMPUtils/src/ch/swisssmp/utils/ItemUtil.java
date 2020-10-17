@@ -6,7 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.craftbukkit.libs.org.apache.commons.codec.binary.Base64;
-import org.bukkit.craftbukkit.v1_16_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_16_R2.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -81,14 +81,14 @@ public class ItemUtil {
 	}
 	
 	public static Position getPosition(ItemStack itemStack, String key){
-		net.minecraft.server.v1_16_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
+		net.minecraft.server.v1_16_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
 		if(!nmsStack.hasTag()) return null;
 		CompoundTag tag = NBTUtil.fromNMS(nmsStack.getTag());
 		return tag!=null ? NBTUtil.getPosition(key, tag) : null;
 	}
 	
 	public static void setPosition(ItemStack itemStack, String key, Position position){
-		net.minecraft.server.v1_16_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
+		net.minecraft.server.v1_16_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
 		CompoundTag tag = NBTUtil.fromNMS(nmsStack.getTag());
 		if(tag==null) tag = new CompoundTag();
 		NBTUtil.set(key, position, tag);
@@ -97,14 +97,14 @@ public class ItemUtil {
 	}
 	
 	public static String getString(ItemStack itemStack, String key){
-		net.minecraft.server.v1_16_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
+		net.minecraft.server.v1_16_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
 		if(!nmsStack.hasTag()) return null;
 		CompoundTag tag = NBTUtil.fromNMS(nmsStack.getTag());
 		return tag!=null && tag.containsKey(key) ? tag.getString(key) : null;
 	}
 	
 	public static void setString(ItemStack itemStack, String key, String value){
-		net.minecraft.server.v1_16_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
+		net.minecraft.server.v1_16_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
 		CompoundTag tag = NBTUtil.fromNMS(nmsStack.getTag());
 		if(tag==null) tag = new CompoundTag();
 		tag.putString(key, value);
@@ -117,14 +117,14 @@ public class ItemUtil {
 	}
 	
 	public static int getInt(ItemStack itemStack, String key, int fallback){
-		net.minecraft.server.v1_16_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
+		net.minecraft.server.v1_16_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
 		if(!nmsStack.hasTag()) return fallback;
 		CompoundTag tag = NBTUtil.fromNMS(nmsStack.getTag());
 		return tag!=null && tag.containsKey(key) ? tag.getInt(key) : fallback;
 	}
 	
 	public static void setInt(ItemStack itemStack, String key, int value){
-		net.minecraft.server.v1_16_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
+		net.minecraft.server.v1_16_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
 		CompoundTag tag = NBTUtil.fromNMS(nmsStack.getTag());
 		if(tag==null) tag = new CompoundTag();
 		tag.putInt(key, value);
@@ -137,14 +137,14 @@ public class ItemUtil {
 	}
 	
 	public static double getDouble(ItemStack itemStack, String key, double fallback){
-		net.minecraft.server.v1_16_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
+		net.minecraft.server.v1_16_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
 		if(!nmsStack.hasTag()) return fallback;
 		CompoundTag tag = NBTUtil.fromNMS(nmsStack.getTag());
 		return tag!=null && tag.containsKey(key) ? tag.getDouble(key) : fallback;
 	}
 	
 	public static void setDouble(ItemStack itemStack, String key, double value){
-		net.minecraft.server.v1_16_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
+		net.minecraft.server.v1_16_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
 		CompoundTag tag = NBTUtil.fromNMS(nmsStack.getTag());
 		if(tag==null) tag = new CompoundTag();
 		tag.putDouble(key, value);
@@ -157,14 +157,14 @@ public class ItemUtil {
 	}
 	
 	public static boolean getBoolean(ItemStack itemStack, String key, boolean fallback){
-		net.minecraft.server.v1_16_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
+		net.minecraft.server.v1_16_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
 		if(!nmsStack.hasTag()) return fallback;
 		CompoundTag tag = NBTUtil.fromNMS(nmsStack.getTag());
 		return tag!=null && tag.containsKey(key) ? tag.getBoolean(key) : fallback;
 	}
 	
 	public static void setBoolean(ItemStack itemStack, String key, boolean value){
-		net.minecraft.server.v1_16_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
+		net.minecraft.server.v1_16_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
 		CompoundTag tag = NBTUtil.fromNMS(nmsStack.getTag());
 		if(tag==null) tag = new CompoundTag();
 		tag.putBoolean(key, value);
@@ -173,13 +173,13 @@ public class ItemUtil {
 	}
 	
 	public static void setData(ItemStack itemStack, CompoundTag tag){
-		net.minecraft.server.v1_16_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
+		net.minecraft.server.v1_16_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
 		nmsStack.setTag(NBTUtil.toNMS(tag!=null ? tag : new CompoundTag()));
 		itemStack.setItemMeta(CraftItemStack.getItemMeta(nmsStack));
 	}
 	
 	public static CompoundTag getData(ItemStack itemStack){
-		net.minecraft.server.v1_16_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
+		net.minecraft.server.v1_16_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
 		if(!nmsStack.hasTag()) return null;
 		return NBTUtil.fromNMS(nmsStack.getTag());
 	}

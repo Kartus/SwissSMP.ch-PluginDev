@@ -58,14 +58,14 @@ public class WarpPoints {
         if(dataFile != null){
             WarpPoints.load(dataFile, world);
         } else{
-            Bukkit.getLogger().info(WarpsPlugin.getPrefix() + " Couldn't load warps.json");
+            Bukkit.getLogger().info(WarpsPlugin.getPrefix() + " Couldn't load warps.json for world " + world.getName());
         }
     }
 
     public static void load(File dataFile, World world){
         JsonObject json = JsonUtil.parse(dataFile);
         if(json == null || !json.has("warps")) {
-            Bukkit.getLogger().info(WarpsPlugin.getPrefix() + " Couldn't load warp-file");
+            Bukkit.getLogger().info(WarpsPlugin.getPrefix() + " Couldn't load warp-file for world " + world.getName());
             return;
         }
         JsonArray warpsSection = json.getAsJsonArray("warps");
