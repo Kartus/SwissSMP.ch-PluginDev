@@ -21,5 +21,6 @@
     <orderEntry type="module" module-name="WebCore" />
     <orderEntry type="module" module-name="CustomItems" />
     <orderEntry type="module" module-name="ResourcepackManager" />
+    <orderEntry type="module" module-name="CustomRecipeAPI" />
   </component>
 </module>

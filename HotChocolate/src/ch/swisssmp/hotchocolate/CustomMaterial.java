@@ -1,5 +1,6 @@
 package ch.swisssmp.hotchocolate;
 
+import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 
 import ch.swisssmp.customitems.CustomItemBuilder;
@@ -15,8 +16,10 @@ public enum CustomMaterial {
 	}
 	
 	public static CustomMaterial of(ItemStack itemStack) {
-		String customEnum = CustomItems.getCustomEnum(itemStack);
-		if(customEnum==null) return null;
+		String customEnum = CustomItems.getCustomEnum(itemStack).toUpperCase();
+		if(customEnum==null){
+			return null;
+		}
 		try {
 			return CustomMaterial.valueOf(customEnum);
 		}
