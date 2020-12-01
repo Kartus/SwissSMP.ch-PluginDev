@@ -105,12 +105,20 @@ public class DeathMessages {
         List<CustomDeathMessage> matchingCustomDeathMessages = customDeathMessages.stream()
                 .filter(msg -> msg.vanillaId == vanillaDeathMessage.id)
                 .filter(msg -> msg.cause == null || (msg.cause == null && cause == null) || (msg.cause != null && msg.cause.equals(cause)))
-                .filter(msg -> (msg.entity == null && entity == null) || (msg.entity != null && msg.entity.equals(entity)))
-                .filter(msg -> (msg.block == null && block == null) || (msg.block != null && msg.block.equals(block)))
+                .filter(msg -> msg.entity == null || (msg.entity == null && entity == null) || (msg.entity != null && msg.entity.equals(entity)))
+                .filter(msg -> msg.block == null || (msg.block == null && block == null) || (msg.block != null && msg.block.equals(block)))
                 .collect(Collectors.toList());
-        if (matchingCustomDeathMessages == null || matchingCustomDeathMessages.isEmpty())
+        if (matchingCustomDeathMessages == null || matchingCustomDeathMessages.isEmpty()) {
+//            Bukkit.getLogger().info("Keine passende Todesnachricht gefunden für Id:" + vanillaDeathMessage.id + ", cause:" + cause + ", entity:" + entity + ", block:" + block);
             return null;
-        return matchingCustomDeathMessages.get(r.nextInt(matchingCustomDeathMessages.size()));
+        }
+//       Bukkit.getLogger().info(matchingCustomDeathMessages.size() + " Todesnachrichten gefunden.");
+        for (CustomDeathMessage msg : matchingCustomDeathMessages) {
+//            Bukkit.getLogger().info("Erste Todesnachricht:" + msg.message + ", cause:" + msg.cause + ", entity" + msg.entity + ":, block:" + msg.block + ", vanillaId:" + msg.vanillaId + " ");
+        }
+        CustomDeathMessage message = matchingCustomDeathMessages.get(r.nextInt(matchingCustomDeathMessages.size()));
+  //      Bukkit.getLogger().info("Todesnachricht gefunden mit Message:" + message.message + ", cause:" + message.cause + ", entity" + message.entity + ":, block:" + message.block + ", vanillaId:" + message.vanillaId + " ");
+        return message;
     }
 
     private static void reload(Consumer<String> sendResult, JsonObject deathMessageData) {
@@ -184,6 +192,26 @@ public class DeathMessages {
             this.message = message;
             this.cause = cause;
             this.block = block;
+        }
+
+        public String getCause() {
+            return this.cause;
+        }
+
+        public String getMessage() {
+            return this.message;
+        }
+
+        public String getEntity() {
+            return this.entity;
+        }
+
+        public String getBlock() {
+            return this.block;
+        }
+
+        public int getVanillaId() {
+            return this.vanillaId;
         }
 
     }
