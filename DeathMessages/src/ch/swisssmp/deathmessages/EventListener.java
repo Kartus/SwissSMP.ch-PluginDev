@@ -1,6 +1,5 @@
 package ch.swisssmp.deathmessages;
 
-import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Entity;
@@ -8,7 +7,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByBlockEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -68,7 +66,7 @@ public class EventListener implements Listener {
                         }
 
                     } else {
-                        if (e instanceof Zombie && ((Zombie) e).isBaby()) {
+                        if (e instanceof Zombie && !((Zombie) e).isAdult()) {
                             entity = "BABY_" + e.getType();
                         } else {
                             entity = e.getType().toString();

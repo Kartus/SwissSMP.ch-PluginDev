@@ -9,7 +9,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -17,7 +16,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class DeathMessages {
@@ -69,33 +67,50 @@ public class DeathMessages {
         String customMessage = randomMessage.message;
 
         ArrayList<String> masks = new ArrayList<>();
+//         Bukkit.getLogger().info("arraylänge:" + array.size());
+//         int counter = 0;
         for (JsonElement maskElement : array) {
             masks.add(maskElement.getAsString());
+//             Bukkit.getLogger().info("mask " + counter + ":" + masks.get(counter++));
         }
         if (masks.isEmpty())
             return oldMessage;
 
         for (String mask : masks) {
             vanillaMessage = vanillaMessage.replace(mask, ";");
+//             Bukkit.getLogger().info("vanillaMessage:" + vanillaMessage);
         }
         String oldCopy = oldMessage;
-        String[] splitVanillaMessage = vanillaMessage.split(Pattern.quote(";"));
+//         Bukkit.getLogger().info("oldCopy vor schleife:" + oldCopy);
+        String[] splitVanillaMessage = vanillaMessage.split(";");
         for (String splitVanillaMessagePart : splitVanillaMessage) {
+            if (splitVanillaMessagePart.isEmpty())
+                continue;
+//             Bukkit.getLogger().info("splitVanillaMessagePart in schleife:" + splitVanillaMessagePart);
             oldCopy = oldCopy.replace(splitVanillaMessagePart, "\n");
+//             Bukkit.getLogger().info("oldCopy in schleife:" + oldCopy);
         }
-        String[] splitOldMessage = oldCopy.split(Pattern.quote("\n"));
-        for (String om : splitOldMessage) {
-        }
+        String[] splitOldMessage = oldCopy.split("\n");
+//         for(String splitOldMsg : splitOldMessage){
+//             Bukkit.getLogger().info("SplitoldMessage:"+splitOldMsg);
+//         }
+//         int counter2 = 0;
         for (String maskElement : masks) {
-            String maskInsert = new String();
+            String maskInsert;
+//            Bukkit.getLogger().info("MaskElement "+counter2+" in Schleife:" + maskElement);
             if ("{Player}".equals(maskElement)) {
                 maskInsert = player.getDisplayName();
+                //                Bukkit.getLogger().info("Player MaskInsert "+counter2+" in Schleife:" + maskInsert);
             } else if (("{Mob}".equals(maskElement) || "{Killer}".equals(maskElement)) && killer != null && !killer.isEmpty()) {
                 maskInsert = killer;
+                //               Bukkit.getLogger().info("Mob or Killer MaskInsert "+counter2+" in Schleife:" + maskInsert);
             } else {
                 maskInsert = splitOldMessage[masks.indexOf(maskElement)];
+//                 Bukkit.getLogger().info("other MaskInsert "+counter2+" in Schleife:" + maskInsert);
             }
             customMessage = customMessage.replace(maskElement, maskInsert);
+//             Bukkit.getLogger().info("CustomMessage "+counter2+" in Schleife:" + customMessage);
+//             counter2++;
         }
         return customMessage;
     }
@@ -117,7 +132,7 @@ public class DeathMessages {
 //            Bukkit.getLogger().info("Erste Todesnachricht:" + msg.message + ", cause:" + msg.cause + ", entity" + msg.entity + ":, block:" + msg.block + ", vanillaId:" + msg.vanillaId + " ");
         }
         CustomDeathMessage message = matchingCustomDeathMessages.get(r.nextInt(matchingCustomDeathMessages.size()));
-  //      Bukkit.getLogger().info("Todesnachricht gefunden mit Message:" + message.message + ", cause:" + message.cause + ", entity" + message.entity + ":, block:" + message.block + ", vanillaId:" + message.vanillaId + " ");
+        //      Bukkit.getLogger().info("Todesnachricht gefunden mit Message:" + message.message + ", cause:" + message.cause + ", entity" + message.entity + ":, block:" + message.block + ", vanillaId:" + message.vanillaId + " ");
         return message;
     }
 

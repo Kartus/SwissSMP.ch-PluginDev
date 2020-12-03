@@ -1,6 +1,7 @@
 package ch.swisssmp.utils;
 
 import java.util.Set;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
@@ -102,6 +103,18 @@ public class PluginSender implements ConsoleCommandSender {
 	}
 
 	@Override
+	public void sendMessage(UUID uuid, String s) {
+		//duly noted but ignored.
+		return;
+	}
+
+	@Override
+	public void sendMessage(UUID uuid, String[] strings) {
+		//duly noted but ignored.
+		return;
+	}
+
+	@Override
 	public Spigot spigot() {
 		return Bukkit.getConsoleSender().spigot();
 	}
@@ -133,6 +146,12 @@ public class PluginSender implements ConsoleCommandSender {
 
 	@Override
 	public void sendRawMessage(String arg0) {
+		//duly noted but ignored.
+		return;
+	}
+
+	@Override
+	public void sendRawMessage(UUID uuid, String s) {
 		//duly noted but ignored.
 		return;
 	}
