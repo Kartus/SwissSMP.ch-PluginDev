@@ -16,12 +16,12 @@ public enum CustomMaterial {
 	}
 	
 	public static CustomMaterial of(ItemStack itemStack) {
-		String customEnum = CustomItems.getCustomEnum(itemStack).toUpperCase();
+		String customEnum = CustomItems.getCustomEnum(itemStack);
 		if(customEnum==null){
 			return null;
 		}
 		try {
-			return CustomMaterial.valueOf(customEnum);
+			return CustomMaterial.valueOf(customEnum.toUpperCase());
 		}
 		catch(Exception e) {
 			return null;
