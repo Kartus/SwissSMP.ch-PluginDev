@@ -2,6 +2,7 @@ package ch.swisssmp.resourcepack;
 
 import java.util.UUID;
 
+import net.minecraft.server.v1_16_R2.Resource;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -22,11 +23,11 @@ public class PlayerCommand implements CommandExecutor{
 				player = Bukkit.getPlayer(UUID.fromString(playerString));
 			}
 			if(player==null){
-				sender.sendMessage("[§1ResourcepackManager§r] §cSpieler "+playerString+" nicht gefunden.");
+				sender.sendMessage(ResourcepackManagerPlugin.getPrefix() + " " +playerString+" nicht gefunden.");
 				return true;
 			}
 			String resourcepack = args[2];
-			ResourcepackManager.setResourcepack(player, resourcepack);
+			ResourcepackManagerPlugin.setResourcepack(player, resourcepack);
 			break;
 		}
 		case "get":{
@@ -37,16 +38,16 @@ public class PlayerCommand implements CommandExecutor{
 				player = Bukkit.getPlayer(UUID.fromString(playerString));
 			}
 			if(player==null){
-				sender.sendMessage("[§1ResourcepackManager§r] §cSpieler "+playerString+" nicht gefunden.");
+				sender.sendMessage(ResourcepackManagerPlugin.getPrefix() + " §cSpieler "+playerString+" nicht gefunden.");
 				return true;
 			}
-			if(!ResourcepackManager.playerMap.containsKey(player)){
-				sender.sendMessage("[§1ResourcepackManager§r] §7"+player.getName()+" hat aktuell kein Server-Resourcepack aktiv.");
+			if(!ResourcepackManagerPlugin.playerMap.containsKey(player)){
+				sender.sendMessage(ResourcepackManagerPlugin.getPrefix() + " §7"+player.getName()+" hat aktuell kein Server-Resourcepack aktiv.");
 				return true;
 			}
 			else{
-				String resourcepack = ResourcepackManager.getResourcepack(player);
-				sender.sendMessage("[§1ResourcepackManager§r] §7"+player.getName()+" hat folgendes Server-Resourcepack aktiv: ");
+				String resourcepack = ResourcepackManagerPlugin.getResourcepack(player);
+				sender.sendMessage(ResourcepackManagerPlugin.getPrefix() + " §7"+player.getName()+" hat folgendes Server-Resourcepack aktiv: ");
 				sender.sendMessage(resourcepack);
 			}
 			break;
@@ -59,19 +60,19 @@ public class PlayerCommand implements CommandExecutor{
 					player = Bukkit.getPlayer(UUID.fromString(playerString));
 				}
 				if(player==null){
-					sender.sendMessage("[§1ResourcepackManager§r] §cSpieler "+playerString+" nicht gefunden.");
+					sender.sendMessage(ResourcepackManagerPlugin.getPrefix() + " §cSpieler "+playerString+" nicht gefunden.");
 					return true;
 				}
-				ResourcepackManager.playerMap.remove(player);
-				ResourcepackManager.updateResourcepack(player);
-				sender.sendMessage("[§1ResourcepackManager§r] §aResourcepack von "+player.getName()+" aktualisiert.");
+				ResourcepackManagerPlugin.playerMap.remove(player);
+				ResourcepackManagerPlugin.updateResourcepack(player);
+				sender.sendMessage(ResourcepackManagerPlugin.getPrefix() + " §aResourcepack von "+player.getName()+" aktualisiert.");
 			}
 			else{
 				for(Player player : Bukkit.getOnlinePlayers()){
-					ResourcepackManager.playerMap.remove(player);
-					ResourcepackManager.updateResourcepack(player);
+					ResourcepackManagerPlugin.playerMap.remove(player);
+					ResourcepackManagerPlugin.updateResourcepack(player);
 				}
-				sender.sendMessage("[§1ResourcepackManager§r] §aResourcepacks für alle Spieler aktualisiert.");
+				sender.sendMessage(ResourcepackManagerPlugin.getPrefix() + " §aResourcepacks für alle Spieler aktualisiert.");
 			}
 			break;
 		}

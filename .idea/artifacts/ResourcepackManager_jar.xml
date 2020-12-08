@@ -4,6 +4,7 @@
     <root id="archive" name="ResourcepackManager.jar">
       <element id="module-output" name="ResourcepackManager" />
       <element id="file-copy" path="$PROJECT_DIR$/ResourcepackManager/plugin.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/ResourcepackManager/src/config.yml" />
     </root>
   </artifact>
 </component>

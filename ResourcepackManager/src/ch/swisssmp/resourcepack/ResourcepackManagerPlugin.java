@@ -12,9 +12,9 @@ import ch.swisssmp.utils.URLEncoder;
 import ch.swisssmp.webcore.DataSource;
 import ch.swisssmp.webcore.HTTPRequest;
 
-public class ResourcepackManager extends JavaPlugin{
+public class ResourcepackManagerPlugin extends JavaPlugin{
 	private static PluginDescriptionFile pdfFile;
-	private static ResourcepackManager plugin;
+	private static ResourcepackManagerPlugin plugin;
 	
 	protected static HashMap<Player,String> playerMap = new HashMap<Player,String>();
 	
@@ -22,6 +22,10 @@ public class ResourcepackManager extends JavaPlugin{
 	public void onEnable() {
 		plugin = this;
 		pdfFile = getDescription();
+
+		getConfig().options().copyDefaults();
+		saveDefaultConfig();
+		EventListener.reloadAdditionalResourcepacks();
 		
 		PlayerCommand playerCommand = new PlayerCommand();
 		this.getCommand("resourcepack").setExecutor(playerCommand);
@@ -37,7 +41,7 @@ public class ResourcepackManager extends JavaPlugin{
 			return;
 		playerMap.remove(player);
 		if(resourcepack==null) return;
-		HTTPRequest request = DataSource.getResponse(ResourcepackManager.getInstance(), "get_url.php", new String[]{
+		HTTPRequest request = DataSource.getResponse(ResourcepackManagerPlugin.getInstance(), "get_url.php", new String[]{
 				"resourcepack="+URLEncoder.encode(resourcepack)
 		});
 		request.onFinish(()->{
@@ -53,7 +57,7 @@ public class ResourcepackManager extends JavaPlugin{
 	}
 	
 	public static void updateResourcepack(Player player, long delay){
-		Bukkit.getScheduler().runTaskLater(ResourcepackManager.plugin, new Runnable(){
+		Bukkit.getScheduler().runTaskLater(ResourcepackManagerPlugin.plugin, new Runnable(){
 			public void run(){
 				updateResourcepack(player);
 			}
@@ -64,7 +68,7 @@ public class ResourcepackManager extends JavaPlugin{
 		PlayerResourcePackUpdateEvent event = new PlayerResourcePackUpdateEvent(player);
 		Bukkit.getPluginManager().callEvent(event);
 		String resourcepack = String.join("+", event.getComponents());
-		ResourcepackManager.setResourcepack(player, resourcepack);
+		ResourcepackManagerPlugin.setResourcepack(player, resourcepack);
 		
 	}
 
@@ -75,7 +79,11 @@ public class ResourcepackManager extends JavaPlugin{
 		Bukkit.getLogger().info(pdfFile.getName() + " has been disabled (Version: " + pdfFile.getVersion() + ")");
 	}
 	
-	public static ResourcepackManager getInstance(){
+	public static ResourcepackManagerPlugin getInstance(){
 		return plugin;
+	}
+
+	public static String getPrefix(){
+		return "[§1ResourcepackManager§r]";
 	}
 }

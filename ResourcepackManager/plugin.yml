@@ -1,4 +1,4 @@
-main: ch.swisssmp.resourcepack.ResourcepackManager
+main: ch.swisssmp.resourcepack.ResourcepackManagerPlugin
 version: 1.8
 api-version: 1.13
 name: ResourcepackManager
