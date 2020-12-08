@@ -115,7 +115,7 @@ public class EventListener implements Listener {
 			event.getPlayer().setStatistic(Statistic.TIME_SINCE_REST, 0);
 		},10L);
 		
-		double distanceToPreviousBed = previousBed!=null && block!=null ? previousBed.distanceSquared(block.getLocation()) : Double.MAX_VALUE;
+		double distanceToPreviousBed = previousBed!=null && block!=null && previousBed.getWorld()==world ? previousBed.distanceSquared(block.getLocation()) : Double.MAX_VALUE;
 		if(distanceToPreviousBed>36){
 			SwissSMPler.get(event.getPlayer()).sendActionBar(ChatColor.GREEN+"Spawnpunkt gesetzt!");
 		}
