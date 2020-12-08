@@ -102,13 +102,11 @@ public class PluginSender implements ConsoleCommandSender {
 		return;
 	}
 
-	@Override
 	public void sendMessage(UUID uuid, String s) {
 		//duly noted but ignored.
 		return;
 	}
 
-	@Override
 	public void sendMessage(UUID uuid, String[] strings) {
 		//duly noted but ignored.
 		return;
@@ -150,7 +148,6 @@ public class PluginSender implements ConsoleCommandSender {
 		return;
 	}
 
-	@Override
 	public void sendRawMessage(UUID uuid, String s) {
 		//duly noted but ignored.
 		return;
