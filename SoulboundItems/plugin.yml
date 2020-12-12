@@ -7,6 +7,14 @@ description: Fügt Eigenschaft 'Seelengebunden' zu Items hinzu, so dass diese nu
 depends: [SwissSMPUtils,CustomItems]
 softdepend: [Shops]
 permissions:
+  soulbound.admin:
+    description: Ermöglich, Items zu binden
+    default: op
   souldbound.ignore:
     description: Ermöglicht, seelengebundene Items von anderen Spielern zu berühren
     default: op
+commands:
+  soulbind:
+    usage: /soulbind (uuid)
+    description: Bindet ein Item an einen Spieler
+    permission: soulbound.admin

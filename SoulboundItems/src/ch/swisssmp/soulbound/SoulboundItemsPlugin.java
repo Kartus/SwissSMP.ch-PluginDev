@@ -15,6 +15,8 @@ public class SoulboundItemsPlugin extends JavaPlugin {
 		plugin = this;
 		Bukkit.getPluginManager().registerEvents(new EventListener(), this);
 
+		this.getCommand("soulbind").setExecutor(new SoulboundCommand());
+
 		Bukkit.getLogger().info(getDescription().getName() + " has been enabled (Version: " + getDescription().getVersion() + ")");
 	}
     
