@@ -164,7 +164,8 @@ public class EventListener implements Listener{
 		if(merchantInventory.getHolder()==null){
 			return;
 		}
-		Villager villager = (Villager) merchantInventory.getMerchant();
+		if(!(merchantInventory.getHolder() instanceof Villager)) return;
+		Villager villager = (Villager) merchantInventory.getHolder();
 		if(villager.getRecipeCount()==0) return;
 		MerchantRecipe recipe = merchantInventory.getSelectedRecipe();
 		this.updateCurrencyDisplay((Player) event.getPlayer(), merchantInventory, recipe);
