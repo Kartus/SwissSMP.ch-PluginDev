@@ -1,8 +1,6 @@
 package ch.swisssmp.nightskipper;
 
-import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.world.TimeSkipEvent;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -43,6 +41,12 @@ public class SleepChecker extends BukkitRunnable {
         int playerCount = players.size();
         int sleepingCount = (int) players.stream().filter(p->p.isSleeping()).count();
         if(playerCount==0 || sleepingCount/(float) playerCount < percentage){
+            if(sleepingCount!=0) {
+                for (Player player : players) {
+                    player.sendMessage(ChatColor.GOLD + "[NightSkipper] "
+                            + ChatColor.DARK_RED + sleepingCount + "/" + playerCount + ChatColor.DARK_GRAY + " Spieler im Bett");
+                }
+            }
             return;
         }
 
